@@ -1,5 +1,6 @@
 <?php include "header.php";?>
-//hi
+//We include header file
+//Now code start
       <script>
 		function chkd()
 		{
