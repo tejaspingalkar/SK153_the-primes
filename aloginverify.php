@@ -1,4 +1,5 @@
 <?php
+//connection file include
 include "conn.php";
 //this is login validate.php
 $mobile= mysqli_real_escape_string($conn,($_POST['mobile']));
