@@ -21,7 +21,18 @@
             title.innerHTML = "You're using HTTPS :)";
         }else if(protocol == "http:"){
             title.innerHTML = "This connection isn't secure :( as it uses HTTP";
+        }var protocol = window.location.protocol;
+        
+        var title = document.getElementById("title-element");
+
+        if (protocol == 'https:') {
+            title.innerHTML = "You're using HTTPS :)";
+        }else if(protocol == "http:"){
+            title.innerHTML = "This connection isn't secure :( as it uses HTTP";
         }
+        
+        //First File To check the network i.e either http or https
+        //
     </script>
 </body>
 
