@@ -31,7 +31,7 @@ if(!isset($_POST['city']))
   <style>
   .modal-header, h4, .close {
     
-    color:white !important;
+    color:white!important;
     text-align: center;
     
   }
