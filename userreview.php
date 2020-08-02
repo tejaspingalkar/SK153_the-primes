@@ -30,7 +30,7 @@ if(!isset($_POST['self_long']))
 }else{
   $self_lon = $_POST['self_long'];
 }
-
+//if not through post the getting lat long through cookie
 //echo $self_lat;
 //echo $self_lon;
 
@@ -110,7 +110,7 @@ $dist =  $dist*1000;
     <?php
 
   
-   if($dist > '1500')
+   if($dist > '500')
     {
      echo '<script language="javascript">';
      echo 'alert("You Are Not In the Range to Review OR ");';
@@ -129,25 +129,7 @@ $dist =  $dist*1000;
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header" style="padding:15px 50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6><span class="glyphicon glyphicon-lock"></span> Terms And Conditions</h6>
-        </div>
-
-        <div class="modal-body" style="padding:40px 50px;">
-          <p>1) The every uploaded image got process through the image processing algorithm
-                to avoid the offensive or nude content. <br><br>
-             2) The mac address and ip address is also get submitted along with current gps location
-                just to backtrack or use in future.<br><br>
-             3) And MANY MANY MORE...........
-    
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
-          
-        </div>
+      <
       </div>
       
     </div>
