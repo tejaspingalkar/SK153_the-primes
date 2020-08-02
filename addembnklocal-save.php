@@ -192,10 +192,11 @@ $result = mysqli_query($conn, $query);
 if ($result) {
     echo mysqli_error($conn);
     //echo $path;
-    echo '<script>alert("Embankment added successfully");window.location="addembank1.php";</script>';
+    echo '<script>alert("Embankment added successfully");window.location="local_authority_index.php
+    .php";</script>';
 } else {
     echo mysqli_error($conn);
-    //echo '<script>alert("Oops.. Something went wrong! Please try again...");window.location="addembank.php";</script>';
+    echo '<script>alert("Oops.. Something went wrong! Please try again...");window.location="addembank.php";</script>';
 }
 }}
 
