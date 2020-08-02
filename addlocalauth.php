@@ -1,5 +1,5 @@
 <?php include "localheader.php";?>
-      <script>
+     	 <script>
 		function chkd()
 		{
 		    
