@@ -24,7 +24,7 @@ $result= mysqli_query($conn,$query );
                 
                         <?php
                         
-                            if($overall > 70)
+                            if($overall > 50)
                              {
                                  $msg='The '.$rows['embankment_name'].$rows['location'].' Embankment is in Danger Zone Immediate Attention is Required';
                                 mail($email, 'Notice',$msg, 'From: overlordactual007@gmail.com');
