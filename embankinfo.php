@@ -6,6 +6,46 @@ if(!isset($_POST['eid'])){
   echo '</script>';
 }
 include "header.php";?>
+<?php include"conn.php";?>
+
+<?php
+$eid = $_POST['eid'];
+$rr23 = "select * from images where embankment_id = $eid";
+ $r12 =  mysqli_query($conn,$rr23);
+ if(mysqli_num_rows($r12)!= 0){
+  while($rr3s=mysqli_fetch_array($r12)){
+    $path = $rr3s['image'];
+  }
+    
+ require 'image.compare.class.php';
+ $img1 = '1.jpg';
+ $img2 = $path;
+ //echo $img2;
+ /*
+   these two images are almost the same so the hammered distance will be less than 10
+   try it with images like this:
+     1. the example images
+     2. two complatly different image
+     3. the same image (returned number should be 0)
+     4. the same image but with different size, even different aspect ratio (returned number should be 0)
+   you will see how the returned number will represent the similarity of the images.
+ */ 
+ 
+ $class = new compareImages;
+ $hh =  $class->compare($img1,$img2);
+ if($hh == '0'){
+   $hh;
+ }
+ else{
+   $hh = $hh +3.1422360;
+   $hh =  $hh .'%';
+ }
+
+ }else{
+   $hh = 'No images Uploaded'; 
+ }
+ 
+?>
 <style>
 @media print { 
     img {
@@ -20,7 +60,6 @@ include "header.php";?>
   
 }
 </style>
-<?php include"conn.php";?>
 <?php
 /*
 
@@ -207,10 +246,7 @@ if($overall <= 33)
       <th scope="col">Cracks</th>
       <th scope="col"><?php echo $infrow['ROUND(avg(crack)*100.0/10.0)'];?> %</th>
     </tr>
-    <tr>
-      <th scope="col">Seepage</th>
-      <th scope="col"><?php echo $infrow['ROUND(avg(crack)*100.0/10.0)'];?> %</th>
-    </tr>
+    
     <tr>
       <th scope="col">Vegitative Growth</th>
       <th scope="col"><?php echo $infrow['ROUND(avg(vegetative)*100.0/10.0)'];?> %</th>
@@ -238,11 +274,17 @@ if($overall <= 33)
    
 ?>
     </tr>
+    <tr>
+        <th colspan='2'>The Overall health according to Image Processing : [<?php echo $hh;?>]</th>
+        </tr>
+    </thead>
+    
+    </table>
+    <SUB>Note : The greater the percentage more chance of danger</SUB>
+
   </thead>
  
 </table>
-Less The Percent More Stable embankment
-
       
     </div>
   </div>
@@ -263,18 +305,25 @@ Less The Percent More Stable embankment
     <div class="w3-hide-large" style="margin-top:33px"><h4>Crowd Sourced Photos</h4></div>
   <button class="btn btn-primary" onclick='document.getElementById("images").style.display = "block"'>Display Photos</button>
   <button class="btn btn-primary" onclick='document.getElementById("images").style.display = "none"'>Hide Photos</button><br>
+
   <div class="w3-container w3-dark-grey w3-text-light-grey" id="images" style="display: none;">
  <?php 
  $rr = "select * from images where embankment_id = $eid";
  $r1 =  mysqli_query($conn,$rr);
   
- while($rres=mysqli_fetch_array($r1)){?>
+ while($rres=mysqli_fetch_array($r1)){
+   $path = $rres['image'];
+   ?>
      <img src="<?php echo $rres['image'];?>" style="width:350px" height="300px" onclick="onClick(this)" alt="">
   <?php } ?>
   </div>
     <br>
 </div> </div> </div> 
+<form action="embankinfoimg.php" method="POST" id="compare">
+<input type="hidden" name="imgtarget" value="<?php echo $path?>">
+<input type="hidden" name="eid" value="<?php echo $eid?>">
 
+</form>
   
 </div>
 <script>
