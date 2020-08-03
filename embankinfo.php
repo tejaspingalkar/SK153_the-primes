@@ -195,7 +195,7 @@ if($overall <= 33)
   <tbody>
     <tr>
     <th scope="col">Area</th>
-      <th scope="col">#  </th>
+      <th scope="col"><?php?></th>
     </tr>
     <tr>
     <th scope="col">Diameter</th>
