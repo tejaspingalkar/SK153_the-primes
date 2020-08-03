@@ -176,8 +176,8 @@ if($overall <= 33)
         </tr>
 
         <tr>
-        <th>Last Mainainance</th>
-          <td><?php echo $row["date_of_establishment"];?></td>
+        <th>Last Maintenance</th>
+          <td><?php echo $row["date_of_modified"];?></td>
         </tr>
 
        
