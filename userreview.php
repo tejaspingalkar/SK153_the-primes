@@ -110,7 +110,7 @@ $dist =  $dist*1000;
     <?php
 
   
-   if($dist > '500000000000000000000000')
+   if($dist > '500')
     {
      echo '<script language="javascript">';
      echo 'alert("You Are Not In the Range to Review OR ");';
