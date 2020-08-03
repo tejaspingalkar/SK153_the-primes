@@ -130,6 +130,14 @@
                       <input type="date" class="form-control" id="form-control-2" name="dateofest">
                     </div>
                   </div>  
+
+
+                  <div class="form-group">
+                    <label for="form-control-2" class="col-sm-3 control-label">Last Date Of Maintenance</label>
+                    <div class="col-sm-6">
+                      <input type="date" class="form-control" id="form-control-2" name="dateoflast">
+                    </div>
+                  </div> 
                   
                   
 
