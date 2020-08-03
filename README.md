@@ -4,3 +4,4 @@ alogin.php is SUPER ADMIN LOGIN
 the Credentials for super admins are as following
 mobile : 9999999999
 password : 9999999999
+USE hackathon(8).sql file and import the database
