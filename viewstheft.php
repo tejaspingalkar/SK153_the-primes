@@ -3,7 +3,7 @@ include "localheader.php";
 ?>
 <?php
 include "conn.php";
-$query="select * from watertheft where $scope like '%$scopename%' and status = 'active' and type = 'sand'";
+$query="select * from watertheft where $scope like '%$scopename%' and status = 'active' and type = 'sand' ORDER BY theft_id DESC";
 $result= mysqli_query($conn,$query );
 //echo $query;
 $today = date("Y-m-d h:i:s");
