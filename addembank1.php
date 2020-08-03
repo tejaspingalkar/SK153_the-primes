@@ -1,7 +1,22 @@
 <?php include 'localheader.php'; ?>
-<?php 
-$lat = $_POST['lat'];
-$lon = $_POST['lon'];
+<?php
+if(!isset($_POST['lat'])) 
+{
+  $lat  = 0;
+}else{
+  $lat = $_POST['lat'];
+
+}
+
+if(!isset($_POST['lon'])) 
+{
+  $lon  = 0;
+}else{
+  $lon = $_POST['lon'];
+
+}
+
+
 ?>
 
 <style>

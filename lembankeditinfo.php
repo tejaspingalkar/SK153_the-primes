@@ -1,23 +1,15 @@
-<?php 
-if(!isset($_POST['eid'])){
-  echo '<script language="javascript">';
-  echo 'alert("You are Not Doing It By valid Way");';
-  echo 'window.location.href="editembank.php";';
-  echo '</script>';
-}?>
+<?php
+include "localheader.php";
+$eid = $_POST['bid'];
+$q="select * from embankment where embankment_id = '$eid'";
+$res=mysqli_query($conn,$q);
+$row=mysqli_fetch_array($res);
+?>
 
 <?php
 include "conn.php";
 ?>
-<?php
-include "header.php";
 
-$eid = $_POST['eid'];
-$q="select * from embankment where embankment_id = '$eid'";
-$res=mysqli_query($conn,$q);
-$row=mysqli_fetch_array($res);
-
-?>
 
 <div class="site-content">
         <div class="row">

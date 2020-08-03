@@ -41,16 +41,14 @@ if(isset($_FILES["myfile"]))
 					move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir.$lastid.$_FILES["myfile"]["name"]);
 					 //echo "<br> Error: ".$_FILES["myfile"]["error"];
 					 $store = "uploads/".$lastid.$fileName;
-					 $exif = exif_read_data($store);
+					 //$exif = exif_read_data($store);
 					 //echo "uploads/".$fileName;
-					 if(isset($exif['GPS_IFD_Pointer']))
-					 {	$store = "uploads/".$lastid.$fileName;
+					 	$store = "uploads/".$lastid.$fileName;
 					 	$qry = "insert into images VALUES(NULL,'$lastid','$eid','$store','a')";
 					 	$rs  = mysqli_query($conn, $qry);
 						$ret[$fileName]= $output_dir.$fileName;
 						ECHO 'SUCCESS';
-					}else{
-						ECHO 'TURN ON "GEOLOCATION" OF YOUR CAMERA"';
+					
 //					$ret[$fileName]= "Geolocation Is Not ON";
 				}
 			
@@ -70,6 +68,6 @@ if(isset($_FILES["myfile"]))
 	
     //echo json_encode($ret);
  
-}
+
 
 ?>

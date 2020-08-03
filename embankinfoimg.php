@@ -1,50 +1,36 @@
 <?php 
-if(!isset($_POST['eid'])){
+if(!isset($_POST['imgtarget'])){
   echo '<script language="javascript">';
   echo 'alert("You are Not Doing It By valid Way");';
   echo 'window.location.href="local_authority_login.php";';
   echo '</script>';
 }
 include "header.php";?>
-<?php include"conn.php";?>
-
 <?php
-$eid = $_POST['eid'];
-$rr23 = "select * from images where embankment_id = $eid";
- $r12 =  mysqli_query($conn,$rr23);
- if(mysqli_num_rows($r12)!= 0){
-  while($rr3s=mysqli_fetch_array($r12)){
-    $path = $rr3s['image'];
-  }
-    
- require 'image.compare.class.php';
- $img1 = '1.jpg';
- $img2 = $path;
- //echo $img2;
- /*
-   these two images are almost the same so the hammered distance will be less than 10
-   try it with images like this:
-     1. the example images
-     2. two complatly different image
-     3. the same image (returned number should be 0)
-     4. the same image but with different size, even different aspect ratio (returned number should be 0)
-   you will see how the returned number will represent the similarity of the images.
- */ 
- 
- $class = new compareImages;
- $hh =  $class->compare($img1,$img2);
- if($hh == '0'){
-   $hh;
- }
- else{
-   $hh = $hh +3.1422360;
-   $hh =  $hh .'%';
- }
 
- }else{
-   $hh = 'No images Uploaded'; 
- }
- 
+require 'image.compare.class.php';
+$img1 = '1.jpg';
+$img2 = $_POST['imgtarget'];
+//echo $img2;
+/*
+	these two images are almost the same so the hammered distance will be less than 10
+	try it with images like this:
+		1. the example images
+		2. two complatly different image
+		3. the same image (returned number should be 0)
+		4. the same image but with different size, even different aspect ratio (returned number should be 0)
+	you will see how the returned number will represent the similarity of the images.
+*/ 
+
+$class = new compareImages;
+$hh =  $class->compare($img1,$img2);
+if($hh == '0'){
+	$hh;
+}
+else{
+	$hh = $hh +3.1422360;
+	$hh =  $hh .'%';
+}
 ?>
 <style>
 @media print { 
@@ -60,6 +46,7 @@ $rr23 = "select * from images where embankment_id = $eid";
   
 }
 </style>
+<?php include"conn.php";?>
 <?php
 /*
 
@@ -195,7 +182,7 @@ if($overall <= 33)
   <tbody>
     <tr>
     <th scope="col">Area</th>
-      <th scope="col"><?php?></th>
+      <th scope="col">#  </th>
     </tr>
     <tr>
     <th scope="col">Diameter</th>
@@ -275,16 +262,13 @@ if($overall <= 33)
 ?>
     </tr>
     <tr>
-        <th colspan='2'>The Overall health according to Image Processing : [<?php echo $hh;?>]</th>
-        </tr>
-    </thead>
-    
-    </table>
-    <SUB>Note : The greater the percentage more chance of danger</SUB>
-
+    <th colspan='2'>The Overall health according to Image Processing : [<?php echo $hh;?>]</th>
+    </tr>
   </thead>
  
 </table>
+<SUB>Note : The greater the percentage more chance of danger</SUB>
+
       
     </div>
   </div>
@@ -305,6 +289,7 @@ if($overall <= 33)
     <div class="w3-hide-large" style="margin-top:33px"><h4>Crowd Sourced Photos</h4></div>
   <button class="btn btn-primary" onclick='document.getElementById("images").style.display = "block"'>Display Photos</button>
   <button class="btn btn-primary" onclick='document.getElementById("images").style.display = "none"'>Hide Photos</button><br>
+  <button class="btn btn-primary" onclick='document.getElementById("compare").submit()'>Health</button>
 
   <div class="w3-container w3-dark-grey w3-text-light-grey" id="images" style="display: none;">
  <?php 
@@ -319,10 +304,8 @@ if($overall <= 33)
   </div>
     <br>
 </div> </div> </div> 
-<form action="embankinfoimg.php" method="POST" id="compare">
+<form action="a/image-compare-2013-09-14/demo.php" method="POST" id="compare">
 <input type="hidden" name="imgtarget" value="<?php echo $path?>">
-<input type="hidden" name="eid" value="<?php echo $eid?>">
-
 </form>
   
 </div>

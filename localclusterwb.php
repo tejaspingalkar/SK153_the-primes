@@ -1,11 +1,10 @@
 <?php include "conn.php";?>
-<?php include "header.php";?>
+<?php include "localheader.php";?>
 <?php
-$q="select * from review ";
+$q="select * from waterbodies where $scope like '%$scopename%'";
 $res=mysqli_query($conn,$q);
 ?>
-<html>
-    <head>
+
 <style>
     /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
@@ -19,15 +18,16 @@ html, body {
   padding: 0;
 }
 </style>
-    </head>
-    <body>
-    <div id="map"></div>
+<div class="site-content">
+        <div class="panel panel-default panel-table">
+Switch To : <button class="btn btn-primary" onclick="window.location.href='localcluster.php'">Review</button><h4>Water Bodies</h4>
+    <div id="map"></div></div>
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <!-- Replace the value of the key parameter with your own API key. -->
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARGs5343eKcT7krKZn7wXkGznrlVf9dqQ&callback=initMap">
 </script>
-    </body>
+    
 
     <script>
         function initMap() {
@@ -58,11 +58,11 @@ var markerCluster = new MarkerClusterer(map, markers,
 var locations = [
     <?php
     while ($row=mysqli_fetch_array($res)){
-      $que = "select * from embankment where embankment_id = '$row[1]' ";
-      $res1=mysqli_query($conn,$que);
-      while ($row1=mysqli_fetch_array($res1))
+     //$que = "select * from review where embankment_id = '$row[0]'";
+     //$res1=mysqli_query($conn,$que);
+     //while ($row1=mysqli_fetch_array($res1))
     {?>
-      {lat: <?php echo $row1[3]?>, lng: <?php echo $row1[4]?>},
+      {lat: <?php echo $row['lat']?>, lng: <?php echo $row['lon']?>},
 <?php } }?>
 ]
     </script>
@@ -70,4 +70,5 @@ var locations = [
 <script src="js/cosmos.min.js"></script>
 <script src="js/application.min.js"></script>
 <script src="js/index.min.js"></script>
+    </body>
 </html>

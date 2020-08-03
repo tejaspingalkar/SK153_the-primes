@@ -31,7 +31,7 @@
         <div id="longmoved"></div>
         <div id="myMap"></div> <br>
                 <h3 class="m-t-0 m-b-30" id="lo">Add New Entry</h3>
-                <form class="form-horizontal" method="POST" action="addembnk-save.php" enctype="multipart/form-data">
+                <form class="form-horizontal" method="POST" action="addembnklocal-save.php" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="form-control-1" class="col-sm-3 control-label">Enter Latitude</label>
                     <div class="col-sm-6">

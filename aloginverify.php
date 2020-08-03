@@ -1,5 +1,4 @@
 <?php
-//connection file include
 include "conn.php";
 //this is login validate.php
 $mobile= mysqli_real_escape_string($conn,($_POST['mobile']));
@@ -19,8 +18,6 @@ if (mysqli_num_rows($res) == 1) {
         echo '<script>alert("Username/ password wrong, please try again!");window.location="alogin.php";</script>';
         //echo mysqli_error($conn);
         //echo $query;
-    
-    
     
 }
 ?>
